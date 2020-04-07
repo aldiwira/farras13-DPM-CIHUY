@@ -31,16 +31,21 @@
                     </div>
                     <div class="x_content">
                         <form class="" action="<?= base_url(); ?>" method="post" novalidate>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Barang<span class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="namabarang" required="required" />
+                            <div id="field-wrapper">
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Barang<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="namabarang[]" required="required" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Jumlah Barang<span class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jumlah" required="required" />
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Jumlah Barang<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jumlah[]" required="required" />
+                                    </div>
+                                    <div class="mt-2">
+                                        <a type="button" title="Tambah kolom" id="add_button" class="add_button"><i style="font-size: 20px;" class="fa fa-plus"></i></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="ln_solid">

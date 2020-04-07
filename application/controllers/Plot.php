@@ -24,3 +24,7 @@ class Plot extends CI_Controller
 }
     
     /* End of file Plot.php */
+/* Wejangangan 
+namabarang[] = array untuk nama barang
+jumlah[] = array untuk jumlah barang */
+
