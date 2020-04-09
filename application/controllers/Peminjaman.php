@@ -23,19 +23,30 @@ class Peminjaman extends CI_Controller
 		$data['main_view'] = 'peminjaman';
 		$data['a'] = $this->a->get('list_alat')->result();
 		$data['pj'] = $this->a->get('plot')->result();
+		$data['item'] = $this->a->get("list_alat")->result();
+
 		$this->load->view('dashboard', $data);
 	}
-
+	public function modal()
+	{
+		$output = array();
+		$n = 1;
+		$data=$this->a->json($_POST["ids"])->result(); 
+		foreach ($data as $key) {
+			$output['ALAT_NAMA'] = $key->ALAT_NAMA;
+			$output['JUMLAH'] = $key->JUMLAH;
+			$output['noo'] = $n;
+			$n++;
+		}
+		var_dump($data);
+		echo json_encode($output);
+		
+	}
 	public function ins_peminjaman()
 	{
-		$ab = 	$this->input->post('barang');
-		$a = $this->a->getW('list_alat','ALAT_ID', $ab)->row();
 		$arr = array(
-			'ALAT_ID'				=> $ab,
-			'NAMA_PEMINJAMAN'		=>	$this->input->post('namapeminjam'),
+			'NAMA_PEMINJAM'		=>	$this->input->post('namapeminjam'),
 			'NAMA_ORGANISASI'		=>	$this->input->post('namorgan'),
-			'NAMA_BARANG'			=>	$a->ALAT_NAMA,
-			'JUMLAH_BARANG'			=>	$this->input->post('jumlah'),
 			'TANGGAL_PLOT'			=>	$this->input->post('Tplot'),
 			'TANGGAL_PEMINJAMAN'	=>	$this->input->post('Tpinjam'),
 			'TANGGAL_PENGEMBALIAN'	=>	$this->input->post('Tbali'),
@@ -43,6 +54,23 @@ class Peminjaman extends CI_Controller
 			'JAMINAN'				=>	$this->input->post('jaminan'),
 		);
 		$this->a->insert('plot',$arr);
+		
+		$id = $this->a->getLastId('ID_PEMINJAMAN','plot',1)->row();
+		$nm = $_POST['namabarang'];
+		$jm = $_POST['jumlah'];
+		var_dump($jm,$id,$nm);
+		$detail = array();
+		$n = 0;
+		foreach ($nm as $e) {
+			array_push($detail,array(
+				'id_peminjaman' => $id->ID_PEMINJAMAN,
+				'ALAT_ID'	=> 	$e,
+				'JUMLAH'	=>  $jm[$n]
+			));
+			$n++;
+		}
+
+		$this->a->insertBatch('plot_detail',$detail);
 		redirect("Peminjaman/listPeminjaman");
 	}
 
