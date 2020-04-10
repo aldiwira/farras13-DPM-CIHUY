@@ -44,23 +44,6 @@
                   </div>
                 </div>
                 <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Barang<span class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <select id="barang" name="barang" class="form-control" required>
-                      <option value="">Choose..</option>
-                      <?php foreach ($a as $b) : ?>
-                        <option value="<?= $b->ALAT_ID; ?>"><?= $b->ALAT_NAMA; ?></option>
-                      <?php endforeach ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Jumlah Barang<span class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jumlah" required="required" />
-                  </div>
-                </div>
-                <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Plot<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
                     <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tplot" required="required" />
@@ -88,6 +71,31 @@
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Penjamin (KTM)<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
                     <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jaminan" required="required" />
+                  </div>
+                </div>
+                <hr>
+                <h2>Form Detail</small></h2>
+                <hr>
+                <div id="field-wrapper">
+                  <div class="field item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Barang<span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6">
+                      <select id="barang" name="namabarang[]" class="form-control" required>
+                        <option value="">Choose..</option>
+                        <?php foreach ($a as $b) : ?>
+                          <option value="<?= $b->ALAT_ID; ?>"><?= $b->ALAT_NAMA; ?></option>
+                        <?php endforeach ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3  label-align">Jumlah Barang<span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6">
+                      <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jumlah[]" required="required" />
+                    </div>
+                    <div class="mt-2">
+                      <a type="button" title="Tambah kolom" id="add_button" class="add_button"><i style="font-size: 20px;" class="fa fa-plus"></i></a>
+                    </div>
                   </div>
                 </div>
                 <div class="ln_solid">
@@ -132,8 +140,6 @@
                             <th>No</th>
                             <th>Nama Peminjam</th>
                             <th>Nama Organisasi</th>
-                            <th>Nama Barang</th>
-                            <th>Jumlah Barang</th>
                             <th>Tanggal Plot</th>
                             <th>Tanggal Peminjaman</th>
                             <th>Tanggal Pengembalian</th>
@@ -146,18 +152,20 @@
                           <?php $n = 1;
                           foreach ($pj as $p) : ?>
                             <tr>
-                              <td><input type="checkbox" name="pilih[]"  id="check-all" value="<?= $p->ID_PEMINJAMAN; ?>"> </td>
+                              <td><input type="checkbox" name="pilih[]" id="check-all" value="<?= $p->ID_PEMINJAMAN; ?>"> </td>
                               <td><?= $n; ?></td>
-                              <td><?= $p->NAMA_PEMINJAMAN; ?></td>
+                              <td><?= $p->NAMA_PEMINJAM; ?></td>
                               <td><?= $p->NAMA_ORGANISASI; ?></td>
-                              <td><?= $p->NAMA_BARANG; ?></td>
-                              <td><?= $p->JUMLAH_BARANG; ?></td>
                               <td><?= $p->TANGGAL_PLOT; ?></td>
                               <td><?= $p->TANGGAL_PEMINJAMAN; ?></td>
                               <td><?= $p->TANGGAL_PENGEMBALIAN; ?></td>
                               <td><?= $p->UNTUK_KEPERLUAN; ?></td>
                               <td><?= $p->JAMINAN; ?></td>
-                              <td><button type="button" class="btn-info">OK</button></td>
+                              <td>
+                                <a class='btn btn-success btn-cls update' href='#' data-id="<?= $p->ID_PEMINJAMAN ?>" data-toggle='modal' data-target='#modal-detail'>
+                                  <i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn-info">OK</button>
+                              </td>
                             </tr>
                           <?php $n++;
                           endforeach ?>
@@ -167,11 +175,48 @@
                       <button type="button" class="btn btn-round btn-success">Print</button>
                     </form>
                   </div>
+                  <div id="modal-detail" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                          <h4 class="modal-title">Detail Peminjaman</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div id="modal" class="form-group">
+                            <table id="datatable-checkbox" class="table table-striped table-bordered" style="width:100%">
+                              <thead>
+                                <tr>
+                                  <th>no</th>
+                                  <th>alat</th>
+                                  <th>jumlah</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <p id="noo"> </p>
+                                  </td>
+                                  <td>
+                                    <p id="ALAT_NAMA"> </p>
+                                  </td>
+                                  <td>
+                                    <p id="JUMLAH"> </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Oke</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
