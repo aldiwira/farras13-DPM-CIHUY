@@ -25,7 +25,7 @@ class Galeri extends CI_Controller
 
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		
+
 		$this->load->library('upload', $config);
 
 		if (!$this->upload->do_upload('gambar')) {
@@ -46,9 +46,10 @@ class Galeri extends CI_Controller
 	{
 		# code...
 	}
-	public function del_galeri()
+	public function del_galeri($id)
 	{
-		# code...
+		$this->a->deleteGallery($id);
+		redirect('galeri', 'refresh');
 	}
 }
 
