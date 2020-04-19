@@ -89,6 +89,6 @@ class admin_model extends CI_Model
     {
         $Gallery = $this->getById('galeri', 'GALERI_ID', $id);
         $filename = explode(".", $Gallery->GAL_NAMA)[0];
-        return array_map('unlink', glob(FCPATH . "upload/product/$filename.*"));
+        return array_map('unlink', glob(FCPATH . "uploads/$filename.*"));
     }
 }
