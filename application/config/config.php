@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/d_admin/';
+$config['base_url'] = 'http://localhost/dipiim';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +34,8 @@ $config['base_url'] = 'http://localhost/d_admin/';
 | something else. If you are using mod_rewrite to remove the page set this
 | variable so that it is blank.
 |
-*/
-$config['index_page'] = 'index.php';
+// */
+// $config['index_page'] = 'index.php'; 
 
 /*
 |--------------------------------------------------------------------------
@@ -136,7 +136,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = "vendor/autoload.php";
+$config['composer_autoload'] = "vendor/autoload.php";;
 
 /*
 |--------------------------------------------------------------------------
