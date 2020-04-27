@@ -7,9 +7,22 @@ class admin_model extends CI_Model
     {
         return $this->db->get($tabel);
     }
+    public function getById($tabel, $field_id, $id)
+    {
+        return $this->db->get_where($tabel, [$field_id => $id])->row();
+    }
+    public function getLastId($title, $table, $limit)
+    {
+        $this->db->order_by($title, 'desc');
+        return $this->db->get($table, $limit);
+    }
     public function insert($tabel, $ins)
     {
         return $this->db->insert($tabel, $ins);
+    }
+    public function insertBatch($table, $object)
+    {
+        return $this->db->insert_batch($table, $object);
     }
     public function delete($col, $val, $tabel)
     {
@@ -58,5 +71,24 @@ class admin_model extends CI_Model
         $this->db->join('list_alat', 'list_alat.ALAT_ID = plot_detail.ALAT_ID', 'left');
         $this->db->select($field);
         return $this->db->get('plot_detail');
+    }
+    public function json($id)
+    {
+        $this->db->join('list_alat', 'list_alat.ALAT_ID = plot_detail.ALAT_ID', 'left');
+        $this->db->where('id_peminjaman', $id);
+        return $this->db->get('plot_detail');
+    }
+
+    //Gallery Function
+    public function deleteGallery($id)
+    {
+        $this->__deleteGallery($id);
+        $this->delete('GALERI_ID', $id, 'galeri');
+    }
+    public function __deleteGallery($id)
+    {
+        $Gallery = $this->getById('galeri', 'GALERI_ID', $id);
+        $filename = explode(".", $Gallery->GAL_NAMA)[0];
+        return array_map('unlink', glob(FCPATH . "uploads/$filename.*"));
     }
 }
