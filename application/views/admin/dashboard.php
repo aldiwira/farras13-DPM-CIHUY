@@ -71,15 +71,9 @@
                 </li>
                 <li><a><i class="fa fa-table"></i> Histori Data <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-<<<<<<< HEAD:application/views/dashboard.php
                     <li><a href="<?php echo base_url() ?>Histori/aspirasi">Histori Aspirasi</a></li>
                     <li><a href="<?php echo base_url() ?>Histori/saran">Histori Saran</a>
                     <li><a href="<?php echo base_url() ?>Histori/log">Log</a></li>
-=======
-                    <li><a href="<?php echo base_url() ?>admin/histori/aspirasi">Histori Aspirasi</a></li>
-                    <li><a href="<?php echo base_url() ?>admin/histori/saran">Histori Saran</a>
-                    <li><a href="<?php echo base_url() ?>admin/histori/log">Log</a></li>
->>>>>>> user:application/views/admin/dashboard.php
                   </ul>
                 </li>
                 <li><a><i class="fa fa-desktop"></i> Publikasi Data <span class="fa fa-chevron-down"></span></a>

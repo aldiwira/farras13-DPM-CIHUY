@@ -72,7 +72,6 @@ class admin_model extends CI_Model
         $this->db->select($field);
         return $this->db->get('plot_detail');
     }
-<<<<<<< HEAD
     public function json($id)
     {
         $this->db->join('list_alat', 'list_alat.ALAT_ID = plot_detail.ALAT_ID', 'left');
@@ -91,10 +90,5 @@ class admin_model extends CI_Model
         $Gallery = $this->getById('galeri', 'GALERI_ID', $id);
         $filename = explode(".", $Gallery->GAL_NAMA)[0];
         return array_map('unlink', glob(FCPATH . "uploads/$filename.*"));
-=======
-    public function insertAspirasi($table, $data)
-    {
-        return $this->db->insert('aspirasi', $data);
->>>>>>> user
     }
 }

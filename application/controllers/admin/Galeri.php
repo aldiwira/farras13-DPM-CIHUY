@@ -51,11 +51,7 @@ class Galeri extends CI_Controller
 	public function del_galeri($id)
 	{
 		$this->a->deleteGallery($id);
-<<<<<<< HEAD:application/controllers/Galeri.php
-		redirect('galeri', 'refresh');
-=======
 		redirect('admin/galeri', 'refresh');
->>>>>>> user:application/controllers/admin/Galeri.php
 	}
 }
 
