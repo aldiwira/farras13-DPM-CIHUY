@@ -21,7 +21,13 @@ class Histori extends CI_Controller
 	public function saran()
 	{
 		$data['main_view'] = 'admin/histori_saran';
-		$data['hsr'] = $this->a->getJoinWhere('saran', 'STATUS', '1')->result();
+		$tabel = 'saran';
+		$joinTabel = "users";
+		$joinOn = "users.NIM = saran.NIM";
+		$where = null;
+		$whereClause = null;
+		$attr = "saran.SARAN_ID, users.NAMA, saran.NIM, saran.SARAN, saran.DATE";
+		$data['hsr'] = $this->a->getJoinWhere($tabel, $joinTabel, $joinOn, $where, $whereClause, $attr)->result();
 		$this->load->view('admin/dashboard', $data);
 	}
 	public function log()
