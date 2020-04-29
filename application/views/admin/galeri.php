@@ -115,7 +115,7 @@
                             <td><?= $g->GAL_NAMA; ?></td>
                             <td><?= $g->KONTEN; ?></td>
                             <td>
-                              <a href="<?= base_url() ?>Galeri/del_galeri/<?= $g->GALERI_ID ?>">
+                              <a href="<?= base_url() ?>admin/galeri/del_galeri/<?= $g->GALERI_ID ?>">
                                 <button type="button" class="btn btn-sm btn-round btn-warning">Hapus</button>
                               </a>
 

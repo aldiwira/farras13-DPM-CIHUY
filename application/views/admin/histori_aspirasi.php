@@ -36,7 +36,7 @@
                     <p class="text-muted font-13 m-b-30">
                       Data Histori Aspirasi
                     </p>
-                    <form action="<?= base_url(); ?>Histori/handleAllAction" method="post">
+                    <form action="<?= base_url(); ?>admin/histori/handleAllAction/<?= $handleType ?>" method="post">
                       <table id="datatable-checkbox" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>

@@ -36,7 +36,7 @@
                     <p class="text-muted font-13 m-b-30">
                       Data Histori Saran
                     </p>
-                    <form action="<?= base_url(); ?>Histori/del_hasran" method="post">
+                    <form action="<?= base_url(); ?>admin/histori/handleAllAction/<?= $handleType ?>" method="post">
                       <table id="datatable-checkbox" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
@@ -61,8 +61,8 @@
                           endforeach ?>
                         </tbody>
                       </table>
-                      <button type="submit" class="btn btn-round btn-warning" style="margin-left: 15px">Hapus</button>
-                      <button type="button" class="btn btn-round btn-success">Print</button>
+                      <button type="submit" name="request" value="delete" class="btn btn-round btn-warning" style="margin-left: 15px">Hapus</button>
+                      <button type="submit" name="request" value="print" class="btn btn-round btn-success">Print</button>
                     </form>
                   </div>
                 </div>

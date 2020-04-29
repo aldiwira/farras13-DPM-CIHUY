@@ -41,7 +41,7 @@ class xls
             //setting isi kolom
             $kolom = 2;
             $nomor = 1;
-            // var_dump($data);
+
             foreach ($data as $keys) {
                 foreach ($keys as $key) {
                     foreach ($key as $ke) {

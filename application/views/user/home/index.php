@@ -184,119 +184,20 @@
         <!-- Portfolio Wrapper -->
         <div class="isotope fadeInLeft animated wow grid" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
             <!-- history item -->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four komisi1 isotope-item effect-oscar">
-
-                <div class="portfolio_img">
-                    <img src="<?= base_url() ?>img/komisi1_pic1.jpg" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi1_pic1.jpg" class="fancybox">
-                            <h2>Sidang <span>Pleno</span></h2>
-                            <p>Sidang yang dilakukan di Aula Pertamina untuk melantik struktur pengurus organisasi periode '19/'20.</p>
-                        </a>
+            <?php foreach ($galeriDatas as $key) { ?>
+                <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four komisi<?= $key->KOMISI ?> isotope-item effect-oscar">
+                    <div class="portfolio_img">
+                        <img src="<?= base_url() ?>uploads/<?= $key->GAL_NAMA ?>" alt="Portfolio 1">
                     </div>
-                </figcaption>
-            </figure>
-            <!--/history item -->
-
-            <!-- history item-->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four komisi1 isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi1_pic2.jpg" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi1_pic2.jpg" class="fancybox">
-                            <h2>Lantik <span>KP</span></h2>
-                            <p>Pelantikan Komite Pertimbangan yang dilakukan di Aula Pertamina tahun 2019</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!--/history item -->
-
-            <!-- history item -->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  komisi2  isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi2_pic1.JPG" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi2_pic1.JPG" class="fancybox">
-                            <h2>Debat <span>Terbuka</span></h2>
-                            <p>Serangkaian acara proker unggulan DPM yaitu Pemilihan Raya.</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!--/history item-->
-
-            <!-- history item-->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  komisi2  nature web isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi2_pic2.jpg" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi2_pic2.jpg" class="fancybox">
-                            <h2>Musker <span>DPM</span></h2>
-                            <p>Dokumentasi musyawarah kerja yang dilakukan setiap awal periode.</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!-- history item -->
-
-            <!-- history item -->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  komisi3 isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi3_pic1.jpg" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi3_pic1.jpg" class="fancybox">
-                            <h2>Triwulan <span>BEM</span></h2>
-                            <p>Dokumentasi Rapat Evaluasi Triwulan BEM tahun 2019.</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!--/history item -->
-
-            <!-- history item -->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  komisi4 isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi4_pic1.jpg" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi4_pic1.jpg" class="fancybox">
-                            <h2>MUNAS <span>Jogja</span></h2>
-                            <p>Musyawarah nasional yang dilakukan dikota jogja.</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!--/history item -->
-
-            <!-- history item  -->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four  komisi4 web isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi4_pic2.JPG" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi4_pic2.JPG" class="fancybox">
-                            <h2>Proker <span>Unggul</span></h2>
-                            <p>Dokumentasi proker unggulan DPM yaitu Sekolah legislatif tahun 2019.</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!--/history item -->
-
-            <!-- history item -->
-            <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four   komisi3 isotope-item effect-oscar">
-                <div class="portfolio_img"> <img src="<?= base_url() ?>img/komisi3_pic2.jpg" alt="Portfolio 1"> </div>
-                <figcaption>
-                    <div>
-                        <a href="<?= base_url() ?>img/komisi3_pic2.jpg" class="fancybox">
-                            <h2>Proker <span>BEM</span></h2>
-                            <p>Rapat proker BEM yang dilakukan disetiap awal periode kepemimpinan BEM.</p>
-                        </a>
-                    </div>
-                </figcaption>
-            </figure>
-            <!--/history item -->
-
+                    <figcaption>
+                        <div>
+                            <a href="<?= base_url() ?>uploads/<?= $key->GAL_NAMA ?>" class="fancybox">
+                                <h2><span><?= $key->NAMA_ACARA ?></span></h2>
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+            <?php } ?>
         </div>
         <!--/Portfolio Wrapper -->
 
