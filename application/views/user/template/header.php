@@ -34,7 +34,11 @@
                             <li><a href="">Agenda</a></li>
                             <li><a href="<?= base_url(); ?>aspirasi">Aspirasi</a></li>
                             <li><a href="">Kontak</a></li>
-                            <li><a href="<?= base_url(); ?>login">Login</a></li>
+                            <?php if ($ud != null) { ?>
+                                <li><a href="<?= base_url(); ?>login/logout">Logout</a></li>
+                            <?php }else{ ?>
+                                <li><a href="<?= base_url(); ?>login">Login</a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

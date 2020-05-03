@@ -9,15 +9,18 @@ class Aspirasi extends CI_Controller
     {
         parent::__construct();
         //Do your magic here
-        $this->load->model('admin_model', 'a');
+        $this->load->model('user_model', 'user');
+        if ($this->session->userdata('user_login') == null) {
+            redirect('login');
+        }
     }
-
 
     public function index()
     {
-        $data['oki'] = $this->a->get('oki')->result();
-        $data['kategori'] = $this->a->get('kategori')->result();
-        $this->load->view('user/template/header');
+        $data['ud'] = $this->session->userdata('user_login');
+        $data['oki'] = $this->user->getData('oki')->result();
+        $data['kategori'] = $this->user->getData('kategori')->result();
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/aspirasi/index', $data);
         $this->load->view('user/template/footer');
     }
@@ -30,18 +33,23 @@ class Aspirasi extends CI_Controller
             "KONTEN" => $this->input->post('aspirasi_input'),
             "STATUS" => 0
         );
-        $this->a->insertAspirasi('aspirasi', $datas);
-        redirect("aspirasi/success/sended");
+        $exc = $this->user->insertData('aspirasi', $datas);
+        if ($exc > 0) {
+            redirect("aspirasi/success/sended");
+        } else {
+            redirect("aspirasi/success/fail");
+        }
     }
     public function success($status = null)
     {
-        $this->load->view('template/header');
+        $data['ud'] = $this->session->userdata('user_login');
+        $this->load->view('user/template/header', $data);
         if ($status == 'sended') {
-            $this->load->view('aspirasi/success');
+            $this->load->view('user/aspirasi/success');
         } else {
-            $this->load->view('aspirasi/fail');
+            $this->load->view('user/aspirasi/fail');
         }
-        $this->load->view('template/footer');
+        $this->load->view('user/template/footer');
     }
 }
 

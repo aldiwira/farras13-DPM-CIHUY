@@ -37,7 +37,7 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>DPM JAYA</span></a>
+            <a href="<?php echo base_url(); ?>admin" class="site_title"><i class="fa fa-paw"></i> <span>DPM JAYA</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -45,11 +45,11 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              <img src="<?= base_url();?>img/logo_dpm.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2>DPM</h2>
+              <h2><?= $ud['username']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -103,7 +103,7 @@
                   <img src="images/img.jpg" alt="">DPM
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  <a class="dropdown-item" href="<?php echo base_url(); ?>login"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                 </div>
               </li>
               <li role="presentation" class="nav-item dropdown open">

@@ -12,11 +12,11 @@
 					<form action="<?= base_url(); ?>aspirasi/sendAspirasi" method="post">
 						<div class="form-group">
 							<label for="Nama-input">Nama</label>
-							<input type="text" name="nama_input" class="form-control form-content" id="nama-input" placeholder="Nama Lengkap" required>
+							<input type="text" name="nama_input" class="form-control form-content" id="nama-input" value="<?= $ud['nama']; ?>" readonly>
 						</div>
 						<div class="form-group">
 							<label for="nim-input">Nomer Induk Mahasiswa (NIM)</label>
-							<input type="text" name="nim_input" class="form-control form-content" id="NIM-input" maxlength="10" placeholder="1*********" required>
+							<input type="text" name="nim_input" class="form-control form-content" id="NIM-input" maxlength="10" value="<?= $ud['nim']; ?>" readonly>
 						</div>
 						<div class="form-group">
 							<label for="Kategori-Input">Nama Organisasi Kemahasisawaan Intra</label>

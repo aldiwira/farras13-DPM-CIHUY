@@ -11,12 +11,17 @@ class admin extends CI_Controller
         parent::__construct();
         //Do your magic here
         $this->load->model('admin_model', 'a');
+        $a = $this->session->userdata('admin_login');
+        if ($a == null) {
+            redirect('Login/Ladmin');
+        }
     }
 
     public function index()
     {
-        $data['main_view'] = 'admin/aspirasi';
-        $data['asp'] = $this->a->getASP('0')->result();
+        $data['ud'] = $this->session->userdata('admin_login');
+        $data['main_view'] = 'admin/homepage';
+        // $data['asp'] = $this->a->getASP('0')->result();
         $this->load->view('admin/dashboard', $data);
     }
 }
