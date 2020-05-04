@@ -45,7 +45,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="<?= base_url();?>img/logo_dpm.png" alt="..." class="img-circle profile_img">
+              <img src="<?= base_url(); ?>img/logo_dpm.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
@@ -71,15 +71,15 @@
                 </li>
                 <li><a><i class="fa fa-table"></i> Histori Data <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="<?php echo base_url() ?>Histori/aspirasi">Histori Aspirasi</a></li>
-                    <li><a href="<?php echo base_url() ?>Histori/saran">Histori Saran</a>
-                    <li><a href="<?php echo base_url() ?>Histori/log">Log</a></li>
+                    <li><a href="<?php echo base_url() ?>admin/histori/aspirasi">Histori Aspirasi</a></li>
+                    <li><a href="<?php echo base_url() ?>admin/histori/saran">Histori Saran</a>
+                    <li><a href="<?php echo base_url() ?>admin/histori/log">Log</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-desktop"></i> Publikasi Data <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo base_url() ?>admin/galeri">Tambah Galeri</a></li>
-                    <li><a href="<?php echo base_url() ?>admin/peminjaman">Tambah Barang Peminjaman</a></li>
+                    <li><a href="<?php echo base_url() ?>admin/peminjaman/index">Tambah Barang Peminjaman</a></li>
                     <li><a href="<?php echo base_url() ?>admin/peminjaman/listPeminjaman">Tambah Peminjaman</a></li>
                   </ul>
                 </li>

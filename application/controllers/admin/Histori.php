@@ -10,10 +10,15 @@ class Histori extends CI_Controller
 		//Do your magic here
 		$this->load->model('admin_model', 'a');
 		$this->load->library('xls', 'xls');
+		$a = $this->session->userdata('admin_login');
+		if ($a == null) {
+			redirect('Login/Ladmin');
+		}
 	}
 
 	public function aspirasi()
 	{
+		$data['ud'] = $this->session->userdata('admin_login');
 		$data['aspirasi'] = $this->a->getASP()->result();
 		$data['handleType'] = 'aspirasi';
 		$data['main_view'] = 'admin/histori_aspirasi';
@@ -22,6 +27,7 @@ class Histori extends CI_Controller
 	}
 	public function saran()
 	{
+		$data['ud'] = $this->session->userdata('admin_login');
 		$data['main_view'] = 'admin/histori_saran';
 		$data['handleType'] = 'saran';
 		$tabel = 'saran';
@@ -35,6 +41,7 @@ class Histori extends CI_Controller
 	}
 	public function log()
 	{
+		$data['ud'] = $this->session->userdata('admin_login');
 		$data['main_view'] = 'admin/log';
 		$data['log'] = $this->a->get('log')->result();
 		$this->load->view('admin/dashboard', $data);

@@ -9,10 +9,15 @@ class Galeri extends CI_Controller
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('admin_model', 'a');
+		$a = $this->session->userdata('admin_login');
+		if ($a == null) {
+			redirect('Login/Ladmin');
+		}
 	}
 
 	public function index()
 	{
+		$data['ud'] = $this->session->userdata('admin_login');
 		$data['main_view'] = 'admin/galeri';
 		$data['gal'] = $this->a->get('galeri')->result();
 		$this->load->view('admin/dashboard', $data);

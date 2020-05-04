@@ -9,18 +9,24 @@ class Peminjaman extends CI_Controller
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('admin_model', 'a');
+		$a = $this->session->userdata('admin_login');
+		if ($a == null) {
+			redirect('Login/Ladmin');
+		}
 	}
 
 	public function index()
 	{
-		$data['main_view'] = 'barang';
+		$data['ud'] = $this->session->userdata('admin_login');
+		$data['main_view'] = 'admin/barang';
 		$data['brg'] = $this->a->get('list_alat')->result();
 		$this->load->view('admin/dashboard', $data);
 	}
 
 	public function listPeminjaman()
 	{
-		$data['main_view'] = 'peminjaman';
+		$data['ud'] = $this->session->userdata('admin_login');
+		$data['main_view'] = 'admin/peminjaman';
 		$data['a'] = $this->a->get('list_alat')->result();
 		$data['pj'] = $this->a->get('plot')->result();
 		$this->load->view('admin/dashboard', $data);

@@ -60,5 +60,5 @@ $route['admin/aspirasi'] = 'admin/Aspirasi';
 $route['admin/galeri'] = 'admin/Galeri';
 $route['admin/histori'] = 'admin/Histori';
 $route['admin/kategori'] = 'admin/Kategori';
-$route['admin/peminjaman'] = 'admin/Peminajamn';
+$route['admin/peminjaman'] = 'admin/Peminajamn/index';
 $route['admin/saran'] = 'admin/saran';
