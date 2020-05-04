@@ -23,12 +23,12 @@ class Login extends CI_Controller
         $nim =  $this->input->post('nim1');
         $nama = $this->input->post('name');
         $pass = $this->input->post('password1');
-        
+
         $w = array('EMAIL' => $mail);
         $n = array('NIM' => $nim);
         $cek1 = $this->user->getWhere('users', $w)->row();
         $cek = $this->user->getWhere('users', $n)->row();
-        
+
         if ($cek == null && $cek1 == null) {
             $a = array(
                 'NIM' => $nim,
@@ -36,16 +36,15 @@ class Login extends CI_Controller
                 'PASSWORD' => $pass,
                 'EMAIL' => $mail,
             );
-            $exc = $this->user->insertData('users',$a);
+            $exc = $this->user->insertData('users', $a);
 
             if ($exc > 0) {
-                $this->session->set_flashdata('flash-data', 'Alhamdulillah Berhasil Sign Up');
+                $this->session->set_flashdata('flash-data', 'Berhasil Sign Up');
                 redirect('login');
             } else {
                 $this->session->set_flashdata('flash-data', 'Maaf Anda Kurang Beruntung, Please Try Again');
                 redirect('login');
             }
-        
         } elseif ($nim != $cek->NIM) {
             if ($cek1->EMAIL != $mail) {
                 $arrayName = array(
@@ -54,10 +53,10 @@ class Login extends CI_Controller
                     'PASSWORD' => $pass,
                     'EMAIL' => $mail,
                 );
-                $exc = $this->user->insertData('users',$arrayName);
+                $exc = $this->user->insertData('users', $arrayName);
 
                 if ($exc > 0) {
-                    $this->session->set_flashdata('flash-data', 'Alhamdulillah Berhasil Sign Up');
+                    $this->session->set_flashdata('flash-data', 'Berhasil Sign Up');
                     redirect('login');
                 } else {
                     $this->session->set_flashdata('flash-data', 'Maaf Anda Kurang Beruntung, Please Try Again');
@@ -77,52 +76,50 @@ class Login extends CI_Controller
     {
         $nim =  $this->input->post('nim');
         $pass = $this->input->post('password');
-        
+
         $n = array('NIM' => $nim, 'PASSWORD' => $pass);
-        $cek = $this->user->getWhere('users',$n)->row();
+        $cek = $this->user->getWhere('users', $n)->row();
 
         if ($cek != null) {
-            $userdata = array('nim' => $cek->NIM, 'nama' => $cek->NAMA, 'email' => $cek->EMAIL) ;
-			$this->session->set_userdata('user_login', $userdata);
+            $userdata = array('nim' => $cek->NIM, 'nama' => $cek->NAMA, 'email' => $cek->EMAIL);
+            $this->session->set_userdata('user_login', $userdata);
             $datauser = $this->session->userdata('user_login');
-            
+
             if ($datauser != null) {
                 // echo "<script>history.go(-2);</script>";
-                redirect('Home','refresh');
-            }else{
-                redirect('Login','refresh');
-                
+                redirect('Home', 'refresh');
+            } else {
+                redirect('Login', 'refresh');
             }
-        }else{
+        } else {
             $this->session->set_flashdata('flash-data', 'Pastikan Nim dan Password anda sudah benar');
             redirect('login');
         }
     }
     public function Ladmin()
     {
-        $this->load->view('user/login/login_admin');   
+        $this->load->view('user/login/login_admin');
     }
     public function signInAdmin()
     {
         $nim =  $this->input->post('username');
         $pass = $this->input->post('pass');
-        
+
         $n = array('USERNAME' => $nim, 'PASSWORD' => $pass);
-        $cek = $this->user->getWhere('admin',$n)->row();
+        $cek = $this->user->getWhere('admin', $n)->row();
 
         if ($cek != null) {
-            $userdata = array('username' => $cek->USERNAME) ;
-			$this->session->set_userdata('admin_login', $userdata);
+            $userdata = array('username' => $cek->USERNAME);
+            $this->session->set_userdata('admin_login', $userdata);
             $datauser = $this->session->userdata('admin_login');
-            
+
             if ($datauser != null) {
-               redirect('admin','refresh');
-            }else{
-                
-                redirect('Login/ladmin','refresh');
-                
+                redirect('admin', 'refresh');
+            } else {
+
+                redirect('Login/ladmin', 'refresh');
             }
-        }else{
+        } else {
             $this->session->set_flashdata('flash-data', 'Pastikan Nim dan Password anda sudah benar');
             redirect('login/Ladmin');
         }
@@ -130,7 +127,7 @@ class Login extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('Home','refresh'); 
+        redirect('Home', 'refresh');
     }
 }
 

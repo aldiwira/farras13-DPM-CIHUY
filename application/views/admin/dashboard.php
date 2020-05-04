@@ -103,7 +103,7 @@
                   <img src="images/img.jpg" alt="">DPM
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="<?php echo base_url(); ?>login"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  <a class="dropdown-item" href="<?php echo base_url(); ?>login/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                 </div>
               </li>
               <li role="presentation" class="nav-item dropdown open">
