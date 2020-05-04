@@ -191,8 +191,8 @@
                     </div>
                     <figcaption>
                         <div>
-                            <a href="<?= base_url() ?>uploads/<?= $key->GAL_NAMA ?>" class="fancybox">
-                                <h2><span><?= $key->KONTEN ?></span></h2>
+                            <a class="fancybox" title="<?= $key->KONTEN ?>" href="<?= base_url() ?>uploads/<?= $key->GAL_NAMA ?>">
+                                <h2><span><?= $key->NAMA_ACARA ?></span></h2>
                             </a>
                         </div>
                     </figcaption>
@@ -326,16 +326,16 @@
                 <div class="col-lg-8 wow fadeInLeft delay-06s">
                     <div class="form">
                         <form action="POST" action="<?= base_url(); ?>">
-                        <input class="input-text" type="text" name="nama" value="Your Name *" onFocus="if (this.value == this.defaultValue)
+                            <input class="input-text" type="text" name="nama" value="Your Name *" onFocus="if (this.value == this.defaultValue)
                         this.value = '';" onBlur="if (this.value == '')
                                     this.value = this.defaultValue;">
-                        <input class="input-text" type="email" name="email" value="Your E-mail *" onFocus="if (this.value == this.defaultValue)
+                            <input class="input-text" type="email" name="email" value="Your E-mail *" onFocus="if (this.value == this.defaultValue)
                         this.value = '';" onBlur="if (this.value == '')
                                     this.value = this.defaultValue;">
-                        <textarea class="input-text text-area" name="saran" cols="0" rows="0" onFocus="if (this.value == this.defaultValue)
+                            <textarea class="input-text text-area" name="saran" cols="0" rows="0" onFocus="if (this.value == this.defaultValue)
                         this.value = '';" onBlur="if (this.value == '')
                                     this.value = this.defaultValue;">Your Message *</textarea>
-                        <button class="input-btn" type="submit">send message</button>
+                            <button class="input-btn" type="submit">send message</button>
                         </form>
                     </div>
                 </div>
