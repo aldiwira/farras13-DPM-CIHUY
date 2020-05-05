@@ -18,8 +18,6 @@
     <div class="page">
       <div class="welcome">
         <img class="logo" src="<?= base_url(); ?>img/logo_dpm.png" alt="">
-        <button class="sign_in">Sign In</button>
-        <button class="btn">Sign Up</button>
       </div>
       <div class="sign_up">
         <!-- alert -->
@@ -36,21 +34,11 @@
           </div>
         <?php endif; ?>
         <!-- EndofAlert -->
-        <form method="POST" action="<?= base_url(); ?>login/signUp">
-          <h2>Sign Up your Account</h2>
-          <input type="text" name="nim1" value="" placeholder="NIM" required><br>
-          <input type="text" name="name" value="" placeholder="Full Name" required><br>
-          <input type="email" name="email" value="" placeholder="Email" required><br>
-          <input type="password" name="password1" value="" placeholder="Password" required><br>
-          <input type="submit" name="sign_up" value="Sign Up" class="up">
-        </form>
-      </div>
-      <div class="login">
         <form method="POST" action="<?= base_url(); ?>login/signIn">
-          <h2>Login your Account</h2>
-          <input type="text" name="nim" placeholder="NIM" required><br>
-          <input type="password" name="password" placeholder="Password" required><br>
-          <input type="submit" name="sign_in" value="Sign In" class="in">
+          <h2>Sign In your Account</h2>
+          <input type="text" name="nim" value="" placeholder="NIM" required><br>
+          <input type="password" name="password" value="" placeholder="Password" required><br>
+          <input type="submit" name="sign_in" value="Sign in" class="up">
         </form>
       </div>
     </div>
