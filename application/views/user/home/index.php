@@ -191,7 +191,7 @@
                     </div>
                     <figcaption>
                         <div>
-                            <a class="fancybox" title="<?= $key->KONTEN ?>" href="<?= base_url() ?>uploads/<?= $key->GAL_NAMA ?>">
+                            <a class="fancybox" href="<?= base_url() ?>uploads/<?= $key->GAL_NAMA ?>">
                                 <h2><span><?= $key->NAMA_ACARA ?></span></h2>
                             </a>
                         </div>
