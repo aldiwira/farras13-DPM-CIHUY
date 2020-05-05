@@ -9,6 +9,7 @@ class Peminjaman extends CI_Controller
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('admin_model', 'a');
+		date_default_timezone_set('Asia/Bangkok');
 		$a = $this->session->userdata('admin_login');
 		if ($a == null) {
 			redirect('Login/Ladmin');
@@ -33,22 +34,39 @@ class Peminjaman extends CI_Controller
 	}
 
 	public function ins_peminjaman()
-	{
-		$ab = 	$this->input->post('barang');
-		$a = $this->a->getW('list_alat', 'ALAT_ID', $ab)->row();
+	{		
+		$wkt = date('H:i:s');
+		$plot = $this->input->post('Tplot');
+		$pinjam = $this->input->post('Tpinjam');
+		$bali =  $this->input->post('Tbali');
+		$time1 = date('Y-m-d H:i:s',strtotime($wkt,strtotime($plot)));
+		$time2 = date('Y-m-d H:i:s',strtotime($wkt,strtotime($pinjam)));
+		$time3 = date('Y-m-d H:i:s',strtotime($wkt,strtotime($bali)));
+		
 		$arr = array(
-			'ALAT_ID'				=> $ab,
-			'NAMA_PEMINJAMAN'		=>	$this->input->post('namapeminjam'),
+			
+			'NAMA_PEMINJAM'		=>	$this->input->post('namapeminjam'),
 			'NAMA_ORGANISASI'		=>	$this->input->post('namorgan'),
-			'NAMA_BARANG'			=>	$a->ALAT_NAMA,
-			'JUMLAH_BARANG'			=>	$this->input->post('jumlah'),
-			'TANGGAL_PLOT'			=>	$this->input->post('Tplot'),
-			'TANGGAL_PEMINJAMAN'	=>	$this->input->post('Tpinjam'),
-			'TANGGAL_PENGEMBALIAN'	=>	$this->input->post('Tbali'),
+			'TANGGAL_PLOT'			=>	$time1,
+			'TANGGAL_PEMINJAMAN'	=>  $time2,
+			'TANGGAL_PENGEMBALIAN'	=>	$time3,
 			'UNTUK_KEPERLUAN'		=>	$this->input->post('keperluan'),
 			'JAMINAN'				=>	$this->input->post('jaminan'),
 		);
 		$this->a->insert('plot', $arr);
+
+		$ab = $this->input->post('namabarang[]');
+		$a = $this->input->post('jumlah[]');
+		$b = $this->a->getLastId('ID_PEMINJAMAN', 'plot', 1)->row()->ID_PEMINJAMAN;
+		for ($i=0; $i < count($a); $i++) { 
+			$arra = array(
+				'ALAT_ID' => (int)$ab[$i],
+				'id_peminjaman' => $b,
+				'jumlah' =>	(int)$a[$i],
+			);
+			$this->a->insert('plot_detail', $arra);
+		}		
+		
 		redirect("admin/Peminjaman/listPeminjaman");
 	}
 

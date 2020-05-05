@@ -30,7 +30,7 @@
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-              <form class="" action="<?= base_url(); ?>Peminjaman/ins_peminjaman" method="post" novalidate>
+              <form class="" action="<?= base_url(); ?>admin/Peminjaman/ins_peminjaman" method="post" novalidate>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Peminjam<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
@@ -46,19 +46,19 @@
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Plot<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tplot" required="required" />
+                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tplot" min="<?= date("Y-m-d"); ?>" required="required" />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Peminjaman<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tpinjam" required="required" />
+                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tpinjam" min="<?= date("Y-m-d"); ?>" required="required" />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Pengembalian<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tbali" required="required" />
+                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tbali" min="<?= date("Y-m-d"); ?>" required="required" />
                   </div>
                 </div>
                 <div class="field item form-group">
