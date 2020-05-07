@@ -31,6 +31,7 @@ class Aspirasi extends CI_Controller
             'NIM' => $this->input->post('nim_input'),
             "OKI_ID" => $this->input->post('oki_input'),
             "KONTEN" => $this->input->post('aspirasi_input'),
+            "DATE" => date("Y-m-d H:i:s"),
             "STATUS" => 0
         );
         $exc = $this->user->insertData('aspirasi', $datas);
