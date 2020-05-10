@@ -9,7 +9,7 @@
 			</div>
 			<div class="box-centering">
 				<div class="box-input">
-					<form action="<?= base_url(); ?>aspirasi/status" method="post">
+					<form action="<?= base_url(); ?>aspirasi/handleAllAction" method="post">
 						<div class="form-group">
 							<label for="Nama-input">Nama</label>
 							<input type="text" name="nama_input" class="form-control form-content" id="nama-input" value="<?= $ud['nama']; ?>" readonly>
@@ -20,18 +20,18 @@
 						</div>
 						<div class="form-group">
 							<label for="Kategori-Input">Nama Organisasi Kemahasisawaan Intra</label>
-							<select name="oki_input" class="form-control form-content" id="Kategori-input" required <option value="" selected>Pilih Nama Organisasi Kemahasisawaan Intra</option>
-								<option value=""></option>
+							<select name="oki_input" class="form-control form-content" id="organisasi-input" required>
+								<option value="none" selected>Pilih Nama Organisasi Kemahasisawaan Intra</option>
 								<?php
 								foreach ($oki as $key) { ?>
 									<option value="<?= $key->OKI_ID ?>"><?= $key->OKI_NAMA ?></option>
 								<?php } ?>
 							</select>
 						</div>
-						<div class="form-group">
-							<label for="Kategori-Input">Kategori</label>
-							<select name="kategori_input" class="form-control form-content" id="Kategori-input" required>
-								<option value=""></option>
+						<div id="kategori" class="form-group">
+							<label id="kategori-title" for="Kategori-Input">Kategori</label>
+							<select name="kategori_input" class="form-control form-content" id="kategori-input" required>
+								<option value="" selected>Pilih Kategori</option>
 								<?php foreach ($kategori as $key) { ?>
 									<option value="<?= $key->KAT_ID ?>"><?= $key->KAT_NAMA ?></option>
 								<?php } ?>

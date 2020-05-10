@@ -17,6 +17,15 @@ $(document).ready(function () {
 		$(".main-nav").slideToggle();
 		return false;
 	});
+	$("#kategori").hide();
+	$("#organisasi-input").change(function () {
+		var selected = $(this).children("option:selected").val();
+		if (selected == "none") {
+			$("#kategori").slideUp();
+		} else {
+			$("#kategori").slideDown();
+		}
+	});
 	$("#staticmodal").modal();
 	function resizeText() {
 		var preferredWidth = 767;
