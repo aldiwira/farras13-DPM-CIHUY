@@ -17,7 +17,7 @@ $(document).ready(function () {
 		$(".main-nav").slideToggle();
 		return false;
 	});
-
+	$("#staticmodal").modal();
 	function resizeText() {
 		var preferredWidth = 767;
 		var displayWidth = window.innerWidth;

@@ -18,9 +18,12 @@ class user_model extends CI_Model {
     {
         return $this->db->insert($tabel,$object);
     }
+    public function updateDatas($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 
 }
 
 /* End of file user_model.php */
-
-?>

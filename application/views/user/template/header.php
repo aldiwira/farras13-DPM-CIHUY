@@ -36,7 +36,68 @@
                             <li><a href="">Kontak</a></li>
                             <?php if ($ud != null) { ?>
                                 <li><a href="<?= base_url(); ?>login/logout">Logout</a></li>
-                            <?php }else{ ?>
+                                <li>
+                                    <!-- toggle -->
+                                    <a data-toggle="modal" data-target="#editpassword" href="">Ganti Passwword</a>
+                                    <!-- modal pop up -->
+                                    <div class="modal fade" id="editpassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="<?= base_url(); ?>home/handleAllAction" method="post">
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label for="niminput">NIM</label>
+                                                            <input type="text" class="form-control" name="nimpassword" id="niminput" value="<?= $ud['nim']; ?>" readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="oldinput">Password lama</label>
+                                                            <input type="text" class="form-control" name="oldpassword" id="oldinput">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="newinput">Password baru</label>
+                                                            <input type="text" class="form-control" name="newpassword" id="newinput">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="confirminput">Password baru confirmasi</label>
+                                                            <input type="password" class="form-control" name="confirmpassword" id="confirminput">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" name="edit" value="password" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php if ($this->session->flashdata('flash-data')) :  ?>
+                                        <div class="modal fade" id="staticmodal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Perhatian</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <?= $this->session->flashdata('flash-data'); ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </li>
+                            <?php } else { ?>
                                 <li><a href="<?= base_url(); ?>login">Login</a></li>
                             <?php } ?>
                         </ul>
