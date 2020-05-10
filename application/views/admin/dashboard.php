@@ -83,6 +83,11 @@
                     <li><a href="<?php echo base_url() ?>admin/peminjaman/listPeminjaman">Tambah Peminjaman</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-desktop"></i> Users Data <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="<?php echo base_url() ?>admin/users">List User</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>

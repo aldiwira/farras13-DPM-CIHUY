@@ -33,6 +33,11 @@ class admin_model extends CI_Model
     {
         return $this->db->update($tabel, $obj, $where);
     }
+    public function updateDatas($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
     //joinTable dalam bentuk array untuk valuenya
     public function getJoinWhere($tabel, $joinTabel, $joinOn, $where, $whereClause, $attr)
     {

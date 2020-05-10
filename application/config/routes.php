@@ -62,3 +62,4 @@ $route['admin/histori'] = 'admin/Histori';
 $route['admin/kategori'] = 'admin/Kategori';
 $route['admin/peminjaman'] = 'admin/Peminajamn/index';
 $route['admin/saran'] = 'admin/saran';
+$route['admin/users'] = 'admin/Users';
