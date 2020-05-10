@@ -325,17 +325,29 @@
                 </div>
                 <div class="col-lg-8 wow fadeInLeft delay-06s">
                     <div class="form">
-                        <form action="POST" action="<?= base_url(); ?>">
-                            <input class="input-text" type="text" name="nama" value="Your Name *" onFocus="if (this.value == this.defaultValue)
+                        <form method="POST" action="<?= base_url(); ?>home/handleAllAction ">
+                            <?php if ($ud != null) { ?>
+                                <input class="input-text" type="text" name="nama" value="<?= $ud['nama']; ?>" onFocus="if (this.value == this.defaultValue)
                         this.value = '';" onBlur="if (this.value == '')
-                                    this.value = this.defaultValue;">
-                            <input class="input-text" type="email" name="email" value="Your E-mail *" onFocus="if (this.value == this.defaultValue)
+                                    this.value = this.defaultValue;" readonly>
+                                <input class="input-text" type="email" name="email" value="<?= $ud['email']; ?>" onFocus="if (this.value == this.defaultValue)
                         this.value = '';" onBlur="if (this.value == '')
-                                    this.value = this.defaultValue;">
-                            <textarea class="input-text text-area" name="saran" cols="0" rows="0" onFocus="if (this.value == this.defaultValue)
+                                    this.value = this.defaultValue;" readonly>
+                                <textarea class="input-text text-area" placeholder="Your Message *" name="saran" cols="0" rows="0" onFocus="if (this.value == this.defaultValue)
                         this.value = '';" onBlur="if (this.value == '')
-                                    this.value = this.defaultValue;">Your Message *</textarea>
-                            <button class="input-btn" type="submit">send message</button>
+                                    this.value = this.defaultValue;" required></textarea>
+                            <?php } else { ?>
+                                <input class="input-text" type="text" name="nama" placeholder="Your Name *" onFocus="if (this.value == this.defaultValue)
+                        this.value = '';" onBlur="if (this.value == '')
+                                    this.value = this.defaultValue;" required>
+                                <input class="input-text" type="email" name="email" placeholder="Your E-mail *" onFocus="if (this.value == this.defaultValue)
+                        this.value = '';" onBlur="if (this.value == '')
+                                    this.value = this.defaultValue;" required>
+                                <textarea class="input-text text-area" placeholder="Your Message *" name="saran" cols="0" rows="0" onFocus="if (this.value == this.defaultValue)
+                        this.value = '';" onBlur="if (this.value == '')
+                                    this.value = this.defaultValue;" required></textarea>
+                            <?php } ?>
+                            <button class="input-btn" name="send" value="saran" type="submit">send message</button>
                         </form>
                     </div>
                 </div>

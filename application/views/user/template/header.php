@@ -45,27 +45,24 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
                                                 </div>
                                                 <form action="<?= base_url(); ?>home/handleAllAction" method="post">
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label for="niminput">NIM</label>
-                                                            <input type="text" class="form-control" name="nimpassword" id="niminput" value="<?= $ud['nim']; ?>" readonly>
+                                                            <input type="text" class="form-control" name="nimpassword" id="niminput" value="<?= $ud['nim']; ?>" readonly required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="oldinput">Password lama</label>
-                                                            <input type="text" class="form-control" name="oldpassword" id="oldinput">
+                                                            <input type="text" class="form-control" name="oldpassword" id="oldinput" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="newinput">Password baru</label>
-                                                            <input type="text" class="form-control" name="newpassword" id="newinput">
+                                                            <input type="text" class="form-control" name="newpassword" id="newinput" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="confirminput">Password baru confirmasi</label>
-                                                            <input type="password" class="form-control" name="confirmpassword" id="confirminput">
+                                                            <input type="password" class="form-control" name="confirmpassword" id="confirminput" required>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -82,9 +79,6 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="staticBackdropLabel">Perhatian</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <?= $this->session->flashdata('flash-data'); ?>

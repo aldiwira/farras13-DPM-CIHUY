@@ -25,9 +25,11 @@ class Home extends CI_Controller
     {
         if ($_POST['edit'] == "password") {
             $this->changePassword();
+        } else if ($_POST['send'] == "saran") {
+            $this->sendSaran();
         }
     }
-    public function changePassword()
+    private function changePassword()
     {
         $old = $this->input->post('oldpassword');
         $new = $this->input->post('newpassword');
@@ -59,10 +61,25 @@ class Home extends CI_Controller
             $this->notif("Masukkan password lama dan password baru terlebih dahulu");
         }
     }
-    public function notif($arrg)
+    private function notif($arrg)
     {
         $this->session->set_flashdata('flash-data', $arrg);
         redirect('home');
+    }
+    private function sendSaran()
+    {
+        $name = $this->input->post('nama');
+        $email = $this->input->post('email');
+        $saran = $this->input->post('saran');
+        $daata = $this->session->userdata('user_login');
+
+        $datas = array(
+            'NIM' => $daata['nim'],
+            'SARAN' => $saran,
+        );
+
+        $this->user->insertData("saran", $datas);
+        $this->notif("Saran sudah kami terima, terima kasih sudah mengirimkan saran kepada kami");
     }
 }
 
