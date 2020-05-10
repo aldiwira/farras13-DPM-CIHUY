@@ -87,9 +87,9 @@ class Login extends CI_Controller
 
             if ($datauser != null) {
                 // echo "<script>history.go(-2);</script>";
-                redirect('Home', 'refresh');
+                redirect('home');
             } else {
-                redirect('Login', 'refresh');
+                redirect('login');
             }
         } else {
             $this->session->set_flashdata('flash-data', 'Pastikan Nim dan Password anda sudah benar');
@@ -127,7 +127,7 @@ class Login extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('Home', 'refresh');
+        redirect('home');
     }
 }
 

@@ -3,10 +3,16 @@
         <div class="page-content text-center">
             <h1>Aspirasi anda sudah kami terima</h1>
             <p>Terima kasih sudah mengirimkan aspirasi</p>
-            <a href="<?= base_url(); ?>">
-                <button type="button" class="btn btn-input-home">Home</button>
-            </a>
-
+            <br><br>
+            <p>Bantu kita dalam mengembangkan website ini, dengan mengirimkan saran atau kritik dibawah ini</p>
+            <form action="<?= base_url() ?>aspirasi/handleAllAction" method="post">
+                <div class="form-group">
+                    <br><br>
+                    <textarea name="aspirasi_input" class="form-control text-area-input" id="aspirasi-input"></textarea>
+                </div>
+                <button type="button" class="btn btn-outline-warning btn-input">Cancle</button>
+                <button type="submit" name="send" value="saran" class="btn btn-primary btn-input">Submit</button>
+            </form>
         </div>
     </div>
 </div>

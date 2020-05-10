@@ -53,15 +53,15 @@
                                                             <input type="text" class="form-control" name="nimpassword" id="niminput" value="<?= $ud['nim']; ?>" readonly required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="oldinput">Password lama</label>
+                                                            <label for="oldinput">Old Password</label>
                                                             <input type="text" class="form-control" name="oldpassword" id="oldinput" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="newinput">Password baru</label>
+                                                            <label for="newinput">New Password</label>
                                                             <input type="text" class="form-control" name="newpassword" id="newinput" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="confirminput">Password baru confirmasi</label>
+                                                            <label for="confirminput">Confirm Password</label>
                                                             <input type="password" class="form-control" name="confirmpassword" id="confirminput" required>
                                                         </div>
                                                     </div>

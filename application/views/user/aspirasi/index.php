@@ -9,7 +9,7 @@
 			</div>
 			<div class="box-centering">
 				<div class="box-input">
-					<form action="<?= base_url(); ?>aspirasi/sendAspirasi" method="post">
+					<form action="<?= base_url(); ?>aspirasi/status" method="post">
 						<div class="form-group">
 							<label for="Nama-input">Nama</label>
 							<input type="text" name="nama_input" class="form-control form-content" id="nama-input" value="<?= $ud['nama']; ?>" readonly>
@@ -38,12 +38,12 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="aspirasi-input">Isi Aspirasi anda</label>
+							<label for="aspirasi-input">Aspirasi anda</label>
 							<textarea name="aspirasi_input" class="form-control text-area-input" id="aspirasi-input" required></textarea>
 						</div>
 						<div class="box-centering">
 							<button type="button" class="btn btn-outline-warning btn-input">Clear</button>
-							<button type="submit" class="btn btn-primary btn-input">Submit</button>
+							<button type="submit" name="send" value="aspirasi" class="btn btn-primary btn-input">Submit</button>
 						</div>
 					</form>
 				</div>

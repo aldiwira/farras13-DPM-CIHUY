@@ -24,7 +24,7 @@ class Aspirasi extends CI_Controller
         $this->load->view('user/aspirasi/index', $data);
         $this->load->view('user/template/footer');
     }
-    public function sendAspirasi()
+    private function aspirasi()
     {
         $datas = array(
             'KAT_ID' => $this->input->post('kategori_input'),
@@ -36,21 +36,50 @@ class Aspirasi extends CI_Controller
         );
         $exc = $this->user->insertData('aspirasi', $datas);
         if ($exc > 0) {
-            redirect("aspirasi/success/sended");
+            $this->success('aspirasi');
         } else {
-            redirect("aspirasi/success/fail");
+            $this->success('fail');
         }
     }
-    public function success($status = null)
+    private function success($status = null)
     {
         $data['ud'] = $this->session->userdata('user_login');
         $this->load->view('user/template/header', $data);
-        if ($status == 'sended') {
+        if ($status == 'aspirasi') {
             $this->load->view('user/aspirasi/success');
+        } else if ($status == 'saran') {
+            $this->load->view('user/aspirasi/saran');
         } else {
             $this->load->view('user/aspirasi/fail');
         }
         $this->load->view('user/template/footer');
+    }
+    public function status()
+    {
+        if ($_POST['send'] == 'saran') {
+            $this->saran();
+        } else if ($_POST['send'] == 'aspirasi') {
+            $this->aspirasi();
+        }
+    }
+    private function saran()
+    {
+        $saran = $this->input->post('aspirasi_input');
+        $nim = $this->session->userdata('user_login')['nim'];
+        $datas = array(
+            'NIM' => $nim,
+            'SARAN' => $saran
+        );
+        if ($saran != null) {
+            $exec = $this->user->insertData('saran', $datas);
+            if ($exec > 0) {
+                $this->success('saran');
+            } else {
+                $this->success('fail');
+            }
+        } else {
+            $this->success('fail');
+        }
     }
 }
 
