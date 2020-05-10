@@ -50,13 +50,13 @@ class Home extends CI_Controller
                     $this->user->updateDatas($where, $datas, 'users');
                     $this->notif("Password berhasil di update");
                 } else {
-                    $this->notif("Pastikan password baru, lama, dan confirmasi password benar");
+                    $this->notif("Pastikan password baru yang anda masukan sudah benar dan sesuai");
                 }
             } else {
-                $this->notif("Pastikan password baru, lama, dan confirmasi password benar");
+                $this->notif("Password lama yang anda masukkan salah");
             }
         } else {
-            $this->notif("Pastikan password baru, lama, dan confirmasi password benar");
+            $this->notif("Masukkan password lama dan password baru terlebih dahulu");
         }
     }
     public function notif($arrg)
