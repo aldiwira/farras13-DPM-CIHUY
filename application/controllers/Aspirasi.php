@@ -56,10 +56,16 @@ class Aspirasi extends CI_Controller
     }
     public function status()
     {
-        if ($_POST['send'] == 'saran') {
+        $status = $this->input->post('send');
+
+        if ($status == 'saran') {
             $this->saran();
-        } else if ($_POST['send'] == 'aspirasi') {
+        } else if ($status == 'aspirasi') {
             $this->aspirasi();
+        } else if ($status == 'tohome') {
+            redirect('home');
+        } else {
+            $this->success();
         }
     }
     private function saran()
