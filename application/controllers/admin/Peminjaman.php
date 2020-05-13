@@ -9,6 +9,7 @@ class Peminjaman extends CI_Controller
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('admin_model', 'a');
+		$this->load->library('xls', 'xls');
 		date_default_timezone_set('Asia/Bangkok');
 		$a = $this->session->userdata('admin_login');
 		if ($a == null) {
@@ -84,12 +85,14 @@ class Peminjaman extends CI_Controller
 	{
 		$dt = $this->input->post('pilih');
 		$jl = count($dt);
-
-		for ($i = 0; $i < $jl; $i++) {
-			$this->a->delete('ID_PEMINJAMAN', $dt[$i], 'plot');
+		if ($jl != 0) {
+			for ($i = 0; $i < $jl; $i++) {
+				$this->a->delete('ID_PEMINJAMAN', $dt[$i], 'plot');
+			}
+		} else {
+			redirect('admin/peminjaman/listPeminjaman');
 		}
-
-		redirect('admin/Peminjaman/listPeminjaman');
+		redirect('admin/peminjaman/listPeminjaman');
 	}
 
 	public function del_barangP()
@@ -101,9 +104,45 @@ class Peminjaman extends CI_Controller
 			$this->a->delete('ALAT_ID', $dt[$i], 'list_alat');
 		}
 
-		redirect('admin/Peminjaman');
+		redirect('admin/peminjaman');
 	}
+	public function execute()
+	{
+		$value = $this->input->post('request');
 
+		if ($value == "delete") {
+			$this->del_peminjaman();
+		} else if ($value == "print") {
+			$this->print_barang();
+		}
+	}
+	public function print_barang()
+	{
+		$checkedData = $this->input->post_get('pilih');
+
+		if (!empty($checkedData)) {
+			foreach ($checkedData as $checked) {
+				$data[] = $checked;
+			}
+			$this->printExecutor($data);
+		} else {
+			redirect('admin/peminjaman/listPeminjaman');
+		}
+	}
+	public function printExecutor($barangdatas)
+	{
+		$__DATA = array();
+		$ct = count($barangdatas);
+		for ($i = 0; $i < $ct; $i++) {
+			//ini buat get id dan kawan kawan
+			$id = $barangdatas[$i];
+			$datas = $this->a->__getbyid('plot', "ID_PEMINJAMAN", $id)->result_array();
+
+			//Masukin array biar uwu
+			$__DATA["data"][] = $datas;
+		}
+		$this->xls->export_xls($__DATA, 'barang');
+	}
 	public function upd_peminjaman()
 	{
 		# code...

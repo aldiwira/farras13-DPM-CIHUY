@@ -69,12 +69,13 @@ class Histori extends CI_Controller
 
 		$dt = $this->input->post('pilih');
 		$jl = count($dt);
-
-		for ($i = 0; $i < $jl; $i++) {
-			$this->a->delete('ASP_ID', $dt[$i], 'aspirasi');
+		if ($jl != 0) {
+			for ($i = 0; $i < $jl; $i++) {
+				$this->a->delete('ASP_ID', $dt[$i], 'aspirasi');
+			}
+		} else {
+			redirect('admin/histori/aspirasi');
 		}
-
-		redirect('admin/Histori/aspirasi');
 	}
 	public function print_aspirasi()
 	{
@@ -85,7 +86,8 @@ class Histori extends CI_Controller
 				$data[] = $checked;
 			}
 			$this->printExecutor($data, 'aspirasi');
-			redirect('admin/Histori/aspirasi');
+		} else {
+			redirect('admin/histori/aspirasi');
 		}
 	}
 	public function updateAspirasiStatus($id)
@@ -103,10 +105,13 @@ class Histori extends CI_Controller
 	{
 		$dt = $this->input->post('pilih');
 		$jl = count($dt);
-		for ($i = 0; $i < $jl; $i++) {
-			$this->a->delete('SARAN_ID', $dt[$i], 'saran');
+		if ($jl != 0) {
+			for ($i = 0; $i < $jl; $i++) {
+				$this->a->delete('SARAN_ID', $dt[$i], 'saran');
+			}
+		} else {
+			redirect('admin/saran');
 		}
-		redirect('admin/saran');
 	}
 	public function print_saran()
 	{
@@ -116,6 +121,7 @@ class Histori extends CI_Controller
 				$data[] = $key;
 			}
 			$this->printExecutor($data, 'saran');
+		} else {
 			redirect('admin/saran');
 		}
 	}
@@ -141,7 +147,7 @@ class Histori extends CI_Controller
 				$this->updateAspirasiStatus($id);
 			}
 			//exec
-			$this->xls->export_xls_aspirasi($__DATA, 'aspirasi');
+			$this->xls->export_xls($__DATA, 'aspirasi');
 		} else if ($type == 'saran') {
 			foreach ($data as $key) {
 				//Get saran data by id
@@ -157,7 +163,7 @@ class Histori extends CI_Controller
 				$__DATA["data"][] = $saranData;
 			}
 			//exec
-			$this->xls->export_xls_aspirasi($__DATA, 'saran');
+			$this->xls->export_xls($__DATA, 'saran');
 		}
 	}
 }

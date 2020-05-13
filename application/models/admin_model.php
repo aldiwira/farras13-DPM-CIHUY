@@ -96,4 +96,9 @@ class admin_model extends CI_Model
         $filename = explode(".", $Gallery->GAL_NAMA)[0];
         return array_map('unlink', glob(FCPATH . "uploads/$filename.*"));
     }
+    public function __getbyid($field, $fieldname, $fieldvalue)
+    {
+        $this->db->where($fieldname, $fieldvalue);
+        return $this->db->get($field);
+    }
 }

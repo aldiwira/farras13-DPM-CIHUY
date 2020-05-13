@@ -34,43 +34,43 @@
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Peminjam<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="namapeminjam" required="required" />
+                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="namapeminjam" required />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Organisasi<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="namorgan" required="required" />
+                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="namorgan" required />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Plot<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tplot" min="<?= date("Y-m-d"); ?>" required="required" />
+                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tplot" min="<?= date("Y-m-d"); ?>" required />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Peminjaman<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tpinjam" min="<?= date("Y-m-d"); ?>" required="required" />
+                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tpinjam" min="<?= date("Y-m-d"); ?>" required />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Tanggal Pengembalian<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tbali" min="<?= date("Y-m-d"); ?>" required="required" />
+                    <input type="date" class="form-control" data-validate-length-range="6" data-validate-words="2" name="Tbali" min="<?= date("Y-m-d"); ?>" required />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Keperluan<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="keperluan" required="required" />
+                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="keperluan" required />
                   </div>
                 </div>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Penjamin (KTM)<span class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jaminan" required="required" />
+                    <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jaminan" required />
                   </div>
                 </div>
                 <hr>
@@ -91,7 +91,7 @@
                   <div class="field item form-group">
                     <label class="col-form-label col-md-3 col-sm-3  label-align">Jumlah Barang<span class="required">*</span></label>
                     <div class="col-md-6 col-sm-6">
-                      <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jumlah[]" required="required" />
+                      <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="jumlah[]" required />
                     </div>
                     <div class="mt-2">
                       <a type="button" title="Tambah kolom" id="add_button" class="add_button"><i style="font-size: 20px;" class="fa fa-plus"></i></a>
@@ -132,7 +132,7 @@
                     <p class="text-muted font-13 m-b-30">
                       Data Peminjaman
                     </p>
-                    <form action="<?= base_url(); ?>Peminjaman/del_peminjaman" method="POST">
+                    <form action="<?= base_url(); ?>admin/peminjaman/execute" method="POST">
                       <table id="datatable-checkbox" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
@@ -171,8 +171,8 @@
                           endforeach ?>
                         </tbody>
                       </table>
-                      <button type="submit" class="btn btn-round btn-warning" style="margin-left: 15px">Hapus</button>
-                      <button type="button" class="btn btn-round btn-success">Print</button>
+                      <button type="submit" name="request" value="delete" class="btn btn-round btn-warning" style="margin-left: 15px">Hapus</button>
+                      <button type="submit" name="request" value="print" class="btn btn-round btn-success">Print</button>
                     </form>
                   </div>
                   <div id="modal-detail" class="modal fade">

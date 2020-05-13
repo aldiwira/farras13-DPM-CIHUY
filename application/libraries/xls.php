@@ -8,7 +8,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xls as WriterXls;
 
 class xls
 {
-    public function export_xls_aspirasi($data, $type)
+    public function export_xls($data, $type)
     {
         $spreadsheet = new Spreadsheet();
         //setting properties file
@@ -90,6 +90,48 @@ class xls
                 }
             }
             $filename = "Saran " . date("Y-m-d H:i:s");
+        } else if ($type == "barang") {
+            $spreadsheet->getActiveSheet()->getColumnDimension("B")->setWidth("18");
+            $spreadsheet->getActiveSheet()->getColumnDimension("C")->setWidth("18");
+            $spreadsheet->getActiveSheet()->getColumnDimension("D")->setWidth("18");
+            $spreadsheet->getActiveSheet()->getColumnDimension("E")->setWidth("18");
+            $spreadsheet->getActiveSheet()->getColumnDimension("F")->setWidth("18");
+            $spreadsheet->getActiveSheet()->getColumnDimension("G")->setWidth("18");
+            $spreadsheet->getActiveSheet()->getColumnDimension("H")->setWidth("18");
+            //setting nama kolom
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Nomor')
+                ->setCellValue('B1', 'Nama Peminjam')
+                ->setCellValue('C1', 'Nama Organisasi')
+                ->setCellValue('D1', 'Tanggal Plot')
+                ->setCellValue('E1', 'Tanggal Peminjaman')
+                ->setCellValue('F1', 'Tanggal Pengambilan')
+                ->setCellValue('G1', 'Keperluan')
+                ->setCellValue('H1', 'Jaminan')
+                ->setCellValue('I1', 'Status');
+
+            $kolom = 2;
+            $nomor = 1;
+            foreach ($data as $keys) {
+                foreach ($keys as $key) {
+                    foreach ($key as $ke) {
+                        $spreadsheet->setActiveSheetIndex(0)
+                            ->setCellValue('A' . $kolom, $nomor)
+                            ->setCellValue('B' . $kolom, $ke["NAMA_PEMINJAM"])
+                            ->setCellValue('C' . $kolom, $ke["NAMA_ORGANISASI"])
+                            ->setCellValue('D' . $kolom, $ke["TANGGAL_PLOT"])
+                            ->setCellValue('E' . $kolom, $ke["TANGGAL_PEMINJAMAN"])
+                            ->setCellValue('F' . $kolom, $ke["TANGGAL_PENGEMBALIAN"])
+                            ->setCellValue('G' . $kolom, $ke["UNTUK_KEPERLUAN"])
+                            ->setCellValue('H' . $kolom, $ke["JAMINAN"])
+                            ->setCellValue('I' . $kolom, $ke["STATUS"]);
+
+                        $kolom++;
+                        $nomor++;
+                    }
+                }
+            }
+            $filename = "Barang Pinjaman " . date("Y-m-d H:i:s");
         }
 
 

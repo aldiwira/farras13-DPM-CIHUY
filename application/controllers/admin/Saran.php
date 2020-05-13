@@ -42,10 +42,13 @@ class Saran extends CI_Controller
 	{
 		$dt = $this->input->post('pilih');
 		$jl = count($dt);
-		for ($i = 0; $i < $jl; $i++) {
-			$this->a->delete('SARAN_ID', $dt[$i], 'saran');
+		if ($jl != 0) {
+			for ($i = 0; $i < $jl; $i++) {
+				$this->a->delete('SARAN_ID', $dt[$i], 'saran');
+			}
+		} else {
+			redirect('admin/saran');
 		}
-		redirect('admin/saran');
 	}
 	public function print_saran()
 	{
@@ -55,6 +58,7 @@ class Saran extends CI_Controller
 				$data[] = $key;
 			}
 			$this->printExecutor($data);
+		} else {
 			redirect('admin/saran');
 		}
 	}
@@ -75,7 +79,7 @@ class Saran extends CI_Controller
 			$__DATA["data"][] = $saranData;
 		}
 		//exec
-		$this->xls->export_xls_aspirasi($__DATA, 'saran');
+		$this->xls->export_xls($__DATA, 'saran');
 	}
 }
 
