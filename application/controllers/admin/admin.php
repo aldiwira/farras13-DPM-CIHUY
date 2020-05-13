@@ -13,7 +13,7 @@ class admin extends CI_Controller
         $this->load->model('admin_model', 'a');
         $a = $this->session->userdata('admin_login');
         if ($a == null) {
-            redirect('Login/Ladmin');
+            redirect('admin/login');
         }
     }
 

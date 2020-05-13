@@ -12,7 +12,7 @@ class Aspirasi extends CI_Controller
 		$this->load->library('xls', 'xls');
 		$a = $this->session->userdata('admin_login');
 		if ($a == null) {
-			redirect('Login/Ladmin');
+			redirect('admin/login');
 		}
 	}
 

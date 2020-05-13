@@ -63,3 +63,8 @@ $route['admin/kategori'] = 'admin/Kategori';
 $route['admin/peminjaman'] = 'admin/Peminajamn/index';
 $route['admin/saran'] = 'admin/saran';
 $route['admin/users'] = 'admin/Users';
+$route['admin/login'] = 'Login/Ladmin';
+
+//user route
+$route['/login'] = 'Login';
+$route['/'] = 'Home';

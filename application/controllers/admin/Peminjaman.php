@@ -12,7 +12,7 @@ class Peminjaman extends CI_Controller
 		date_default_timezone_set('Asia/Bangkok');
 		$a = $this->session->userdata('admin_login');
 		if ($a == null) {
-			redirect('Login/Ladmin');
+			redirect('admin/login');
 		}
 	}
 
@@ -34,17 +34,17 @@ class Peminjaman extends CI_Controller
 	}
 
 	public function ins_peminjaman()
-	{		
+	{
 		$wkt = date('H:i:s');
 		$plot = $this->input->post('Tplot');
 		$pinjam = $this->input->post('Tpinjam');
 		$bali =  $this->input->post('Tbali');
-		$time1 = date('Y-m-d H:i:s',strtotime($wkt,strtotime($plot)));
-		$time2 = date('Y-m-d H:i:s',strtotime($wkt,strtotime($pinjam)));
-		$time3 = date('Y-m-d H:i:s',strtotime($wkt,strtotime($bali)));
-		
+		$time1 = date('Y-m-d H:i:s', strtotime($wkt, strtotime($plot)));
+		$time2 = date('Y-m-d H:i:s', strtotime($wkt, strtotime($pinjam)));
+		$time3 = date('Y-m-d H:i:s', strtotime($wkt, strtotime($bali)));
+
 		$arr = array(
-			
+
 			'NAMA_PEMINJAM'		=>	$this->input->post('namapeminjam'),
 			'NAMA_ORGANISASI'		=>	$this->input->post('namorgan'),
 			'TANGGAL_PLOT'			=>	$time1,
@@ -58,15 +58,15 @@ class Peminjaman extends CI_Controller
 		$ab = $this->input->post('namabarang[]');
 		$a = $this->input->post('jumlah[]');
 		$b = $this->a->getLastId('ID_PEMINJAMAN', 'plot', 1)->row()->ID_PEMINJAMAN;
-		for ($i=0; $i < count($a); $i++) { 
+		for ($i = 0; $i < count($a); $i++) {
 			$arra = array(
-				'ALAT_ID' => (int)$ab[$i],
+				'ALAT_ID' => (int) $ab[$i],
 				'id_peminjaman' => $b,
-				'jumlah' =>	(int)$a[$i],
+				'jumlah' =>	(int) $a[$i],
 			);
 			$this->a->insert('plot_detail', $arra);
-		}		
-		
+		}
+
 		redirect("admin/Peminjaman/listPeminjaman");
 	}
 
