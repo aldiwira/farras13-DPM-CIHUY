@@ -15,18 +15,25 @@ $(document).ready(function () {
 		var ids = $(this).data("id");
 		//menggunakan fungsi ajax untuk pengambilan data
 		$.ajax({
-			url: "<?php echo base_url(); ?>peminjaman/modal",
+			url: "modal",
 			type: "POST",
 			data: {
 				ids: ids,
 			},
 			data_type: "json",
-			success: function (data) {
-				$("#modal-detail").modal("show");
-				$("#noo").text("" + data.noo);
-				$("#ALAT_NAMA").text("" + data.ALAT_NAMA);
-				$("#JUMLAH").text("" + data.JUMLAH);
-				alert(data.JUMLAH);
+			success: function (response) {
+				var html;
+			
+				$.each(JSON.parse(response), function () {
+					html += '<tr>';
+					html += '<td><p>'+ss+'</p></td>'
+					html += '<td><p>'+this['ALAT_NAMA']+'</p></td>'
+					html += '<td><p>'+this['JUMLAH']+'</p></td>'
+					$('#polo').html(html);
+					
+					$("#modal-detail").modal("show");
+
+				});
 			},
 		});
 	});

@@ -192,18 +192,8 @@
                                   <th>jumlah</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <p id="noo"> </p>
-                                  </td>
-                                  <td>
-                                    <p id="ALAT_NAMA"> </p>
-                                  </td>
-                                  <td>
-                                    <p id="JUMLAH"> </p>
-                                  </td>
-                                </tr>
+                              <tbody id="polo"> 
+                               
                               </tbody>
                             </table>
                           </div>

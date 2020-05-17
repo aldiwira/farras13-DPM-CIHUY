@@ -101,4 +101,11 @@ class admin_model extends CI_Model
         $this->db->where($fieldname, $fieldvalue);
         return $this->db->get($field);
     }
+    public function modal($id)
+    {
+        return $this->db->query("SELECT * FROM plot_detail as a 
+        JOIN plot as b ON a.ID_PEMINJAMAN = b.ID_PEMINJAMAN
+        JOIN list_alat as c ON a.ALAT_ID = c.ALAT_ID
+        WHERE a.ID_PEMINJAMAN = $id and c.ALAT_ID = a.ALAT_ID");
+    }
 }

@@ -9,7 +9,7 @@
 			</div>
 			<div class="box-centering">
 				<div class="box-input">
-					<form action="<?= base_url(); ?>aspirasi/handleAllAction" method="post">
+					<form action="<?= base_url(); ?>Aspirasi/aspirasi" method="post">
 						<div class="form-group">
 							<label for="Nama-input">Nama</label>
 							<input type="text" name="nama_input" class="form-control form-content" id="nama-input" value="<?= $ud['nama']; ?>" readonly>

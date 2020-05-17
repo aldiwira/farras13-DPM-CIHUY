@@ -24,7 +24,7 @@ class Aspirasi extends CI_Controller
         $this->load->view('user/aspirasi/index', $data);
         $this->load->view('user/template/footer');
     }
-    private function aspirasi()
+    public function aspirasi()
     {
         $datas = array(
             'KAT_ID' => $this->input->post('kategori_input'),

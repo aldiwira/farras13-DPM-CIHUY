@@ -31,9 +31,19 @@ class Peminjaman extends CI_Controller
 		$data['main_view'] = 'admin/peminjaman';
 		$data['a'] = $this->a->get('list_alat')->result();
 		$data['pj'] = $this->a->get('plot')->result();
+		
 		$this->load->view('admin/dashboard', $data);
 	}
+	public function modal()
+	{
+		if (!empty($this->input->post('ids'))) { 
+			$a = $this->input->post('ids');
+			$data = $this->a->modal($a)->result();
 
+			echo json_encode($data); 
+			exit();
+		}
+	}
 	public function ins_peminjaman()
 	{
 		$wkt = date('H:i:s');
@@ -66,6 +76,11 @@ class Peminjaman extends CI_Controller
 				'jumlah' =>	(int) $a[$i],
 			);
 			$this->a->insert('plot_detail', $arra);
+
+			$bx = $this->a->getById('list_alat', 'ALAT_ID', (int) $ab[$i]);
+			$total = $bx->JUMLAH_ALAT - (int) $a[$i];
+			$obj = array('JUMLAH_ALAT' => $total, ); $where = array('ALAT_ID' => (int) $ab[$i], );
+			$this->a->update('list_alat', $obj, $where);
 		}
 
 		redirect("admin/Peminjaman/listPeminjaman");
